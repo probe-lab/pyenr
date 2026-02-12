@@ -264,7 +264,7 @@ impl SigningKey {
         PyBytes::new(py, &pk.encode())
     }
 
-    fn build_enr(&self) -> EnrBuilder {
+    fn builder(&self) -> EnrBuilder {
         EnrBuilder {
             builder: InnerBuilder::new(),
         }

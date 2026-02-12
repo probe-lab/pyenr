@@ -54,7 +54,7 @@ from pyenr import SigningKey
 
 key = SigningKey.generate_secp256k1()
 
-builder = key.build_enr()
+builder = key.builder()
 builder.ip4("192.168.1.1")
 builder.tcp4(30303)
 builder.udp4(9000)
@@ -81,7 +81,7 @@ value = enr.get("mykey")  # bytes or None
 
 ```python
 key = SigningKey.generate_ed25519()
-enr = key.build_enr().build(key)
+enr = key.builder().build(key)
 ```
 
 ### Import an existing key
@@ -162,7 +162,7 @@ enr.items()  # [("id", b"..."), ("ip", b"..."), ...]
 | Method | Description |
 |---|---|
 | `public_key()` | Get compressed public key bytes |
-| `build_enr()` | Start building a new ENR |
+| `builder()` | Start building a new ENR |
 
 ### `EnrBuilder`
 

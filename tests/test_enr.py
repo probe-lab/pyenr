@@ -5,7 +5,7 @@ from pyenr import Enr, SigningKey
 
 # Generate a deterministic test ENR
 _KEY = SigningKey.generate_secp256k1()
-_BUILDER = _KEY.build_enr()
+_BUILDER = _KEY.builder()
 _BUILDER.ip4("127.0.0.1")
 _BUILDER.udp4(30303)
 _BUILDER.tcp4(30303)

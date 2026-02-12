@@ -5,7 +5,7 @@ from pyenr import Enr, SigningKey
 
 def test_base64_roundtrip():
     key = SigningKey.generate_secp256k1()
-    builder = key.build_enr()
+    builder = key.builder()
     builder.ip4("127.0.0.1")
     builder.tcp4(30303)
     builder.udp4(30303)
@@ -21,7 +21,7 @@ def test_base64_roundtrip():
 
 def test_bytes_roundtrip():
     key = SigningKey.generate_secp256k1()
-    builder = key.build_enr()
+    builder = key.builder()
     builder.ip4("10.0.0.1")
     builder.udp4(9000)
     enr = builder.build(key)
@@ -35,7 +35,7 @@ def test_bytes_roundtrip():
 
 def test_ed25519_roundtrip():
     key = SigningKey.generate_ed25519()
-    builder = key.build_enr()
+    builder = key.builder()
     builder.ip4("192.168.1.1")
     builder.tcp4(8545)
     enr = builder.build(key)
@@ -50,7 +50,7 @@ def test_ed25519_roundtrip():
 def test_decode_known_enr():
     """Build an ENR, encode it, decode it back, and verify equality."""
     key = SigningKey.generate_secp256k1()
-    builder = key.build_enr()
+    builder = key.builder()
     builder.ip4("10.0.0.1")
     builder.tcp4(30303)
     builder.udp4(9000)
