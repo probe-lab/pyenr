@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:eips.ethereum.org)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.maturin.rs)",
+      "WebFetch(domain:pyo3.rs)",
+      "WebFetch(domain:docs.rs)",
+      "WebFetch(domain:crates.io)",
+      "Bash(cargo check:*)",
+      "Bash(uv run maturin develop:*)",
+      "Bash(uv run python:*)",
+      "Bash(uv run pytest:*)"
+    ]
+  }
+}
