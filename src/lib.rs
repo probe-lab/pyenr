@@ -12,7 +12,7 @@ fn to_enr_error<E: std::fmt::Display>(err: E) -> PyErr {
 }
 
 /// Python wrapper around `enr::Enr<CombinedKey>`.
-#[pyclass(name = "Enr")]
+#[pyclass(name = "Enr", skip_from_py_object)]
 #[derive(Clone)]
 struct Enr {
     inner: enr::Enr<CombinedKey>,

@@ -28,6 +28,16 @@ def test_from_secp256k1_bytes():
     assert e1.public_key == pk1
 
 
+def test_from_ed25519_bytes():
+    # Generate an ed25519 key
+    key1 = SigningKey.generate_ed25519()
+    pk1 = key1.public_key()
+
+    # Build an ENR and verify public key
+    enr1 = key1.builder().build(key1)
+    assert enr1.public_key == pk1
+
+
 def test_modify_enr_updates_seq():
     key = SigningKey.generate_secp256k1()
     builder = key.builder()

@@ -9,7 +9,7 @@ A Python library for encoding, decoding, and modifying [Ethereum Node Records](h
 - Modify existing ENRs (IP, ports, custom key-value pairs) with automatic re-signing
 - Support for both **secp256k1** and **ed25519** identity schemes
 - Full type stubs for IDE autocomplete and type checking
-- Requires Python >= 3.9
+- Requires Python 3.9 – 3.14
 
 ## Installation
 
@@ -181,7 +181,7 @@ enr.items()  # [("id", b"..."), ("ip", b"..."), ...]
 
 ### Prerequisites
 
-- Python >= 3.9
+- Python 3.9 – 3.14
 - Rust toolchain (install via [rustup](https://rustup.rs))
 - [uv](https://docs.astral.sh/uv/) (recommended) or pip + maturin
 

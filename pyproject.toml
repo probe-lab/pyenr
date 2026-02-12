@@ -6,7 +6,7 @@ build-backend = "maturin"
 name = "pyenr"
 version = "0.1.0"
 description = "Python library for Ethereum Node Records (ENR, EIP-778)"
-requires-python = ">=3.9"
+requires-python = ">=3.9,<=3.14"
 
 [tool.maturin]
 python-source = "python"

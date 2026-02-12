@@ -47,8 +47,8 @@ def test_ed25519_roundtrip():
     assert decoded.tcp4 == 8545
 
 
-def test_decode_known_enr():
-    """Build an ENR, encode it, decode it back, and verify equality."""
+def test_multiple_roundtrips():
+    """Build an ENR and verify multiple encode/decode cycles preserve equality."""
     key = SigningKey.generate_secp256k1()
     builder = key.builder()
     builder.ip4("10.0.0.1")
@@ -56,7 +56,11 @@ def test_decode_known_enr():
     builder.udp4(9000)
     original = builder.build(key)
 
-    encoded = original.to_base64()
-    decoded = Enr.from_base64(encoded)
-    roundtripped = Enr.from_base64(decoded.to_base64())
-    assert roundtripped == original
+    # Multiple roundtrips should preserve the ENR
+    encoded1 = original.to_base64()
+    decoded1 = Enr.from_base64(encoded1)
+    encoded2 = decoded1.to_base64()
+    decoded2 = Enr.from_base64(encoded2)
+    assert decoded1 == original
+    assert decoded2 == original
+    assert encoded1 == encoded2
