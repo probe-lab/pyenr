@@ -11,7 +11,11 @@
       "Bash(cargo check:*)",
       "Bash(uv run maturin develop:*)",
       "Bash(uv run python:*)",
-      "Bash(uv run pytest:*)"
+      "Bash(uv run pytest:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(gh api:*)",
+      "Bash(python3:*)",
+      "Bash(uv run python3:*)"
     ]
   }
 }
