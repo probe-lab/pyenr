@@ -169,6 +169,12 @@ impl Enr {
             .map(|v| PyBytes::new(py, &v))
     }
 
+    /// The signature of the ENR record.
+    #[getter]
+    fn signature<'py>(&self, py: Python<'py>) -> Bound<'py, PyBytes> {
+        PyBytes::new(py, self.inner.signature())
+    }
+
     // -- Serialization --
 
     fn to_base64(&self) -> String {
