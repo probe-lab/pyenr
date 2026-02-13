@@ -154,10 +154,19 @@ impl Enr {
         Ok(())
     }
 
-    /// Get an arbitrary key-value pair.
+    /// Reads a custom key from the record if it exists, decoded as data.
+    /// Caution! Only use for data that is not an aggregate type.
+    /// Returns RLP-decoded bytes (without the RLP length prefix).
     fn get<'py>(&self, py: Python<'py>, key: &str) -> Option<Bound<'py, PyBytes>> {
         #[allow(deprecated)]
         self.inner.get(key).map(|v| PyBytes::new(py, &v))
+    }
+
+    /// Returns the raw RLP-encoded value for a key, including the RLP length prefix.
+    fn get_raw_rlp<'py>(&self, py: Python<'py>, key: &str) -> Option<Bound<'py, PyBytes>> {
+        self.inner
+            .get_raw_rlp(key)
+            .map(|v| PyBytes::new(py, &v))
     }
 
     // -- Serialization --
@@ -190,6 +199,7 @@ impl Enr {
             .collect()
     }
 
+    /// Returns all key-value pairs. Values are raw RLP-encoded bytes (same as `get_raw_rlp`).
     fn items<'py>(&self, py: Python<'py>) -> Vec<(String, Bound<'py, PyBytes>)> {
         self.inner
             .iter()
